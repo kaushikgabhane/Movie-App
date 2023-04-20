@@ -7,7 +7,7 @@ import './FontFamily.css';
 
 const Navbar = () => {
   return (
-    <div className="navbar  flex justify-between">
+    <div className="navbar  flex justify-between  bg-zinc-950 sticky top-0 z-20">
 
       <div className="h-10 ">
         <img src={img} alt='Logo img'  className='h-[100%] rounded-md animate-shake shadow-sm shadow-white'/>

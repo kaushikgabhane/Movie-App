@@ -1,9 +1,11 @@
 import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
 
 function App() {
   return (
-    <div className="App bg-zinc-950">
+    <div className="App">
       <Navbar />
+      <Home />
     </div>
   );
 }
