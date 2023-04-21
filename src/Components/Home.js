@@ -1,17 +1,26 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 
 import Card from './Card';
 import './FontFamily.css';
-// import axios from 'axios';
+import axios from 'axios';
 
-const Home = () => {
 
-    // First learn context Api
-    // const [data,setData] = useState({});
+const Home = ({searchInput}) => {
 
-    // const fetchData = async() => {
-    //     const fetchData = await axios(`https://www.omdbapi.com/?s=${}&apikey=7948e9ef`)
-    // }
+  const [data,setData] = useState({});
+
+    
+  useEffect((searchInput) => { 
+    const fetchApi = async() => {
+      const fetchData = await axios(`https://www.omdbapi.com/?s=${searchInput}&apikey=7948e9ef`);
+  
+      setData(fetchData);
+    }
+    return ()=>{
+      fetchApi();
+    }
+  },[searchInput])
+  console.log(data);
 
 
   return (
