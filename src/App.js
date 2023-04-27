@@ -1,18 +1,20 @@
-import { useContext } from "react";
+import { createContext,useState } from "react";
 
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 
-import { searchContext } from "./Components/SearchBox";
 
+
+export const context = createContext(null);
 
 function App() {
-  const searchInput = useContext(searchContext);
+  const [input , setInput] = useState('avengers');
+  
   return (
-    <div className="App">
+    <context.Provider value={{input , setInput}}>
       <Navbar />
-      <Home searchInput={searchInput}/>
-    </div>
+      <Home />
+    </context.Provider>
   );
 }
 

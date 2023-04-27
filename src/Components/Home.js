@@ -1,33 +1,34 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect , useContext} from 'react'
+import axios from 'axios';
 
 import Card from './Card';
 import './FontFamily.css';
-import axios from 'axios';
 
+import { context } from '../App';
 
-const Home = ({searchInput}) => {
+const Home = () => {
 
   const [data,setData] = useState({});
+  const {input} = useContext(context);
 
-    
-  useEffect((searchInput) => { 
+  useEffect(() => { 
     const fetchApi = async() => {
-      const fetchData = await axios(`https://www.omdbapi.com/?s=${searchInput}&apikey=7948e9ef`);
+      const fetchData = await axios(`https://www.omdbapi.com/?s=${input}&apikey=7948e9ef`);
   
       setData(fetchData);
     }
+
     return ()=>{
       fetchApi();
     }
-  },[searchInput])
-  console.log(data);
 
+  },[input])
+  console.log(data);
+  
 
   return (
     <div className=' min-h-screen min-w-full bg-zinc-900 quattrocento'>
-        <h1 className='text-slate-50 text-xl'> 
-            <Card />
-        </h1>
+      <Card />
     </div>
   )
 }

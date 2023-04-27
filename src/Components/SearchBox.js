@@ -1,21 +1,24 @@
-import React, { useState , createContext } from 'react'
+import React, { useContext } from 'react'
 
 import './FontFamily.css'; 
+import { context } from '../App';
 
 
 const SearchBox = () => {
-  const [input , setInput] = useState('');
-
-
+  
+  const {input , setInput} = useContext(context);
+  
+  // console.log(input);
+  
   return (
-    <searchContext.Provider value='input'>
-      <div className="form-control">
+    <>
+      <div>
         <div className="input-group w-[40vw]">
           <input 
             type="text"   
             placeholder="Search…" 
             value={input}
-            onChange={(e)=> setInput(e.target.value)}
+            onChange={(e)=> {return setInput(e.target.value)}}
             className="outline-none p-2 bg-slate-900 text-white w-[40vw] quattrocento" 
           />
           <button className="btn btn-square">
@@ -23,8 +26,8 @@ const SearchBox = () => {
           </button>
         </div>
       </div>
-    </searchContext.Provider>
+    </>
 )}
 
-export const searchContext = createContext(null);
+
 export default SearchBox
