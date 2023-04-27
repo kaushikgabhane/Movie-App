@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Card = () => {
+const Card = ({details}) => {
+
+  
   return (
       <section aria-label='Movie card' className='card h-[350px] w-[250px] bg-slate-400 z-0'>
-        <img src='' alt='' className=''/>
+        <img src={details.Poster} alt='' className=''/>
         
         <div aria-label='movie details' className=''>
           <h4>Title</h4>
