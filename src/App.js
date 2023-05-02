@@ -9,9 +9,11 @@ export const context = createContext(null);
 
 function App() {
   const [input , setInput] = useState('avengers');
+  const [onchangeValue,setOnhangeValue] = useState();
+
   
   return (
-    <context.Provider value={{input , setInput}}>
+    <context.Provider value={{input,onchangeValue , setInput,setOnhangeValue}}>
       <Navbar />
       <Home />
     </context.Provider>

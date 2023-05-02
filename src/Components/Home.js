@@ -9,34 +9,33 @@ import { context } from '../App';
 const Home = () => {
 
   const [data,setData] = useState({});
-  const {input} = useContext(context);
+  const {onchangeValue} = useContext(context);
 
-  const fetchApi = async() => {
-    const fetchData = await axios(`https://www.omdbapi.com/?s=${input}&apikey=7948e9ef`);
-  
-    setData(fetchData);
-  }
   
   useEffect(() => { 
+    const fetchApi = async() => {
+      const fetchData = await axios.get(`https://www.omdbapi.com/?s=${onchangeValue}&apikey=7948e9ef`);
+      console.log(fetchData);
+    
+      setData(fetchData);
+    }
   
     fetchApi();
   
-  },[])
-  console.log(data);
+  },[onchangeValue])
   
   // for getting values of each result
 
   return (
-    <div className='min-h-screen min-w-full  bg-zinc-900 quattrocento'>
-
-      {
-        data?.Search?.map((ele)=>{
-          
-          return <Card details={ele}/>
+    <div className='min-h-screen min-w-full  bg-zinc-900 quattrocento flex flex-wrap justify-center items-center gap-10 p-5'>
+      { 
+        data?.data?.Search?.map((movie)=>{
+         
+          return <Card  key={movie.imdbID} details={movie} />
         })
       }
     </div>
   )
 }
 
-export default Home
+export default Home;
