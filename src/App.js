@@ -8,8 +8,8 @@ import Home from "./Components/Home";
 export const context = createContext(null);
 
 function App() {
-  const [input , setInput] = useState('avengers');
-  const [onchangeValue,setOnhangeValue] = useState();
+  const [input , setInput] = useState();
+  const [onchangeValue,setOnhangeValue] = useState('avengers');
 
   
   return (

@@ -14,6 +14,7 @@ const SearchBox = () => {
       <div>
         <form onSubmit={(e)=> {
          setOnhangeValue(input);
+         setInput('');
           e.preventDefault();
         }} 
         className="input-group w-[40vw]"

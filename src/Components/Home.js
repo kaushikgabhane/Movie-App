@@ -6,6 +6,7 @@ import './FontFamily.css';
 
 import { context } from '../App';
 
+
 const Home = () => {
 
   const [data,setData] = useState({});
@@ -13,14 +14,19 @@ const Home = () => {
 
   
   useEffect(() => { 
+
     const fetchApi = async() => {
+
       const fetchData = await axios.get(`https://www.omdbapi.com/?s=${onchangeValue}&apikey=7948e9ef`);
-      console.log(fetchData);
-    
       setData(fetchData);
+
     }
-  
+
     fetchApi();
+    
+    return(()=>{
+      fetchApi();
+    })
   
   },[onchangeValue])
   
