@@ -1,36 +1,12 @@
-import React, {useState,useEffect , useContext} from 'react'
-import axios from 'axios';
-
 import Card from './Card';
 import './FontFamily.css';
 
-import { context } from '../App';
+import useAPI from '../Utils/useAPI';
 
 
 const Home = () => {
 
-  const [data,setData] = useState({});
-  const {onchangeValue} = useContext(context);
-
-  
-  useEffect(() => { 
-
-    const fetchApi = async() => {
-
-      const fetchData = await axios.get(`https://www.omdbapi.com/?s=${onchangeValue}&apikey=7948e9ef`);
-      setData(fetchData);
-
-    }
-
-    fetchApi();
-    
-    return(()=>{
-      fetchApi();
-    })
-  
-  },[onchangeValue])
-  
-  // for getting values of each result
+  const {data} = useAPI();
 
   return (
     <div className='min-h-screen min-w-full  bg-zinc-900 quattrocento flex flex-wrap justify-center items-center gap-10 p-5'>
